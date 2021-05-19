@@ -1,10 +1,15 @@
 defmodule DiscussWeb.UserSocket do
   use Phoenix.Socket
 
+  ##Channels
+  #channel "room:*", Disccuss.RoomChannel
   channel "comments:*", Discuss.CommentsChanel
   #get "/comments/:id", CommentController, :join, :handle_in
 
+  ##Transports
   transport :websocket, Phoenix.Transports.WebSocket
+  #transports :longpoll, Phoenix.Transports.LongPoll
+
 
   @impl true
   def connect(%{"token" => token}, socket) do

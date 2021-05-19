@@ -4,19 +4,14 @@
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Discuss · Phoenix Framework</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Discuss Phoenix Framework</title>
     <link rel="stylesheet" href="<%= Routes.static_path(@conn, "/css/app.css") %>"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <script defer type="text/javascript" src="<%= Routes.static_path(@conn, "/js/app.js") %>"></script>
-
-    <script>
-      <%= if @conn.assigns.user do %>
-       window.userToken = "<%= Phoenix.Token.sign(DiscussWeb.Endpoint, "key", @conn.assigns.user.id) %>"
-     <% end %>
-    </script>
-
   </head>
+  
   <body>
   <nav class="light-blue">
     <div class="nav-wrapper container">
@@ -25,21 +20,24 @@
       </a>
       <ul class="right">
         <%= if @conn.assigns[:user] do %>
-          <li>
-            <%= link "Sing Out", to: Routes.auth_path(@conn, :signout) %>
-          </li>
+        <li>
+          <%= link "Sign Out", to: Routes.auth_path(@conn, :signout) %>
+        </li>
         <% else %>
         <li>
-        <%= link "Sign in with Github", to: Routes.auth_path(@conn, :request, "github") %>
+          <%= link "Sign in with Github", to: Routes.auth_path(@conn, :request, "github") %>
         </li>
-        <% end %>
+        <%end%>
       </ul>
     </div>
   </nav>
+    
+    <div class="container">
+
     <header>
       <section class="container">
         <a href="https://phoenixframework.org/" class="phx-logo">
-          <img src="<%= Routes.static_path(@conn, "/images/phoenix.png") %>" alt="Phoenix Framework Logo"/>
+        <h6>Documentation phoenix framework</h6>
         </a>
       </section>
     </header>

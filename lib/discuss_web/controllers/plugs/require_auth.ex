@@ -18,5 +18,4 @@ defmodule Discuss.Plugs.RequireAuth do
        |> halt()
     end
   end
-
 end

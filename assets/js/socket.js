@@ -59,19 +59,17 @@ const createSocket =(topicId)=> {
 // Now that you are connected, you can join channels with a topic:
     let channel = socket.channel(`comments:${topicId}`, {})
     channel.join()
-        .receive("ok", resp => {
-            console.log(resp)
+        .receive("ok", resp => { console.log("Joined successfully", resp)
             renderComments(resp.comments)
         })
-        .receive("error", resp => {
-            console.log("Unable to join", resp)
+        .receive("error", resp => { console.log("Unable to join", resp)
         });
 
     channel.on(`comments:${topicId}:new`,renderComment);
 
     document.querySelector("button").addEventListener('click', () =>{
         const content = document.querySelector('textarea').value;
-        channel.push('comment:add',{content: content})
+        channel.push('comment:hello',{content: content})
     })
 }
 

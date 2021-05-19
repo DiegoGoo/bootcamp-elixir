@@ -11,12 +11,6 @@ user_params = %{token: auth.credentials.token, email: auth.info.email, provider:
     signin(conn, changeset)
   end
 
-  def signout(conn, _params) do
-    conn
-    |> configure_session(drop: true)
-    |> redirect(to: Routes.topic_path(conn, :index))
-  end
-
   defp signin(conn, changeset) do
     case insert_or_update_user(changeset) do
       {:ok, user} ->
@@ -29,6 +23,12 @@ user_params = %{token: auth.credentials.token, email: auth.info.email, provider:
           |> put_flash(:error, "Error signing in")
           |> redirect(to: Routes.topic_path(conn, :index))
     end
+  end
+
+  def signout(conn, _params) do
+    conn
+    |> configure_session(drop: true)
+    |> redirect(to: Routes.topic_path(conn, :index))
   end
 
   defp insert_or_update_user(changeset) do
